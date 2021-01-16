@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Iniciar Sesión</ion-title>
+    <ion-title>Registrarse</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
 
     <ion-item>
       <ion-label position="floating" color="primary">Correo</ion-label>
@@ -33,11 +33,10 @@
       </ng-container>
     </div>
 
-    <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Iniciar Sesión</ion-button>
 
+    <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Registrarse</ion-button>
     <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
   </form>
-  <p class="go-to-register">
-    ¿No tienes cuenta? <a (click)="goToRegisterPage()">Registrarse</a>
-  </p>
+  <p class="go-to-login">Ya tienes una cuenta creada? <a (click)="goLoginPage()">Iniciar Sesión</a></p>
 </ion-content>
