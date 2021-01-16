@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="userName">Usuario: {{messageData.Name}} </ion-title>
+    <ion-title class="userName">Tu eres: {{messageData.Name}} </ion-title>
   </ion-toolbar>
 </ion-header>
+
+<button ion-item (click)="logout()">
+  <ion-icon name="log-out"></ion-icon>
+  Logout
+</button>
 
 <ion-content #content padding id="container">
   <ion-card *ngFor="let messageData of messageList" >
     <ion-card-header>
-      {{messageData.Name}}: 
+      {{messageData.Name}} dice: 
     </ion-card-header>
     <ion-card-content>
       {{messageData.Message}}
@@ -17,15 +22,8 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
-
-
   
   <ion-card-content class="imageContainerButton"  *ngIf="!isUploading && !isUploaded">
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-      <Ion-Fab-Button class="imageContainer">
-        <ion-icon id="uploadBtn" type="file" class="upload" (onclick)="uploadFile($event.target.files)" name="camera-outline"></ion-icon>
-      </Ion-Fab-Button>
-    </ion-fab>
     <ion-button class="imageContainer">
       <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" />
     </ion-button>
@@ -35,8 +33,8 @@
 
     <ion-card-content>
       <div *ngIf="percentage | async as pct">
-        Progress: {{ pct | number }}%
-        <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+        Porcentaje: {{ pct | number }}%
+        <b>Cargando Imagen</b>
       </div>
       <div *ngIf="snapshot | async as snap">
         
@@ -48,23 +46,22 @@
     <ion-card-header>
         <b>Imagen cargada</b>
     </ion-card-header>
-
   </ion-card>
 
 
 <ion-footer id="final-scroll">
   
   <ion-toolbar>
-    <ion-input placeholder="Mensaje..."  [(ngModel)]="messageData.Message"></ion-input>
+    <ion-input placeholder="Escribe tu mensaje"  [(ngModel)]="messageData.Message"></ion-input>
 
     <ion-buttons slot="end" >
+      <ion-button id="uploadBtn" type="file" class="upload" (click)= "uploadFile($event.target.files)" >
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-button>
       <ion-button (click)="CreateRecord()">
         <ion-icon name="send"></ion-icon>
       </ion-button>
 
     </ion-buttons>
-  </ion-toolbar>
-  <ion-toolbar color="danger" (click)="logout()">
-    <ion-title>Cerrar Sesión</ion-title>
   </ion-toolbar>
 </ion-footer>

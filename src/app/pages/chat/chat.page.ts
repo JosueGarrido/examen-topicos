@@ -31,27 +31,16 @@ export class ChatPage implements OnInit {
   userEmail: string;
   passEnc : string;
 
-  // Upload Task 
   task: AngularFireUploadTask;
-
-  // Progress in percentage
   percentage: Observable<number>;
-
-  // Snapshot of uploading file
   snapshot: Observable<any>;
-
-  // Uploaded File URL
   UploadedFileURL: Observable<string>;
 
-
-  //File details  
   fileName:string;
   fileSize:number;
 
-  //Status check 
   isUploading:boolean;
   isUploaded:boolean;
-
   
   constructor(
     private navCtrl: NavController,
@@ -66,7 +55,7 @@ export class ChatPage implements OnInit {
   }
 
   ngOnInit() {
-    this.passEnc = '123123';
+    this.passEnc = '123456';
     this.authService.userDetails().subscribe(res => {
       console.log('res', res);
       if (res !== null) {
@@ -103,13 +92,10 @@ export class ChatPage implements OnInit {
   }
 
   CreateRecord() {
-    this.passEnc = '123123';
-    
+    this.passEnc = '123456';
     this.messageData.CreateDate = new Date();
-    
     this.messageData.Message = crypto.AES.encrypt(this.messageData.Message, this.passEnc).toString();
-    
-
+  
     console.log(this.messageData.Message + ' Encriptado');
 
     this.firebaseService.create_message(this.messageData)
@@ -135,11 +121,8 @@ export class ChatPage implements OnInit {
 
   uploadFile(event: FileList) {
     
-
-    // The File object
     const file = event.item(0)
 
-    // Validation for Images Only
     if (file.type.split('/')[0] !== 'image') { 
      console.error('Archivo no soportado')
      return;
@@ -151,25 +134,18 @@ export class ChatPage implements OnInit {
 
     this.fileName = file.name;
 
-    // The storage path
     const path = `${new Date().getTime()}_${file.name}`;
-
-    // Totally optional metadata
     const customMetadata = { app: 'Freaky Image Upload Demo' };
-
-    //File reference
     const fileRef = this.storage.ref(path);
 
-    // The main task
     this.task = this.storage.upload(path, file, { customMetadata });
 
-    // Get file progress percentage
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges().pipe(
       
       finalize(() => {
-        // Get uploaded file storage path
-        this.passEnc = '123123';
+        
+        this.passEnc = '123456';
         this.UploadedFileURL = fileRef.getDownloadURL();
         
         this.UploadedFileURL.subscribe(resp=>{
