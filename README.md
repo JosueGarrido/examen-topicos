@@ -44,4 +44,4 @@ Descarga `APK` clic en el siguiente enlace [Ionic Chat](https://github.com/Josue
 
 ## Enlace del video
 
-Clic en el siguiente enlace [Video explicativo de la aplicación ](https://youtube.com). :white_check_mark:
+Clic en el siguiente enlace [Video explicativo de la aplicación ](https://youtu.be/-RVfjoGQiYQ). :white_check_mark:
