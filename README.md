@@ -13,14 +13,26 @@ Inonic Chat desarrollado con Ionic Framework, la aplicacion APK ya instalada en 
 
 ## Versiones:
 
-* *Ionic CLI: 6.12.3*
-* *Ionic Framework : @ionic/angular 5.5.2*
-* *@angular/cli : 10.0.8*
+Ionic:
 
-* *cordova-res : 0.15.2*
-* *Native run : 1.3.0*
-* *NodeJS : v12.16.1*
-* *npm: 6.14.6*
+   Ionic CLI                     : 6.12.2 (/usr/local/lib/node_modules/@ionic/cli)
+   Ionic Framework               : @ionic/angular 5.5.2
+   @angular-devkit/build-angular : 0.1000.8
+   @angular-devkit/schematics    : 10.0.8
+   @angular/cli                  : 10.0.8
+   @ionic/angular-toolkit        : 2.3.3
+
+Cordova:
+
+   Cordova CLI       : 10.0.0
+   Cordova Platforms : android 9.0.0
+   Cordova Plugins   : cordova-plugin-ionic-keyboard 2.2.0, cordova-plugin-ionic-webview 4.2.1, (and 4 other plugins)
+
+Utility:
+
+   cordova-res                          : 0.15.2
+   native-run (update available: 1.3.0) : 1.2.2
+
 
 ## Observaciones:
 
